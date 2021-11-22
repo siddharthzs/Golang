@@ -53,6 +53,16 @@ func main() {
 
 	arr2D := [2][3]int{{1,2,3},{4,5,6}}
 	fmt.Println(arr2D)
+
+
+	// Slices
+	var s []int = newarr[:]
+	s = append(s,4)
+	
+	fmt.Printf("capacity: %v, lenth: %v ", cap(newarr),len(newarr))
+	fmt.Println(newarr)
+	fmt.Printf("capacity: %v, lenth: %v ", cap(s),len(s))
+	fmt.Println(s)
 }
 
 // Integers

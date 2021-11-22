@@ -50,6 +50,9 @@ func main() {
 
 	newarr := [3]int{4,5,6}
 	fmt.Println(newarr, " len: ",len(newarr))
+
+	arr2D := [2][3]int{{1,2,3},{4,5,6}}
+	fmt.Println(arr2D)
 }
 
 // Integers

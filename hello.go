@@ -43,9 +43,9 @@ func main() {
 		fmt.Println("defualt")
 	}
 
-
 	// Array
 	var arr [5]int
+	arr[0] = 100
 	fmt.Println(arr)
 }
 

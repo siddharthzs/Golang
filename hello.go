@@ -18,8 +18,35 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 	input, _ := strconv.ParseInt(scanner.Text(), 10, 64)
-	fmt.Printf("You will be %d year old at the end of 2021", 2021-input)
+	fmt.Printf("You will be %d year old at the end of 2021\n", 2021-input)
+	// scanner.Scan()
+	// val,_ := strconv.ParseInt(scanner.Text(),10,64)
+	// if val == 10{
+	// 	fmt.Println("Equal to 10")
+	// } else if val > 10 {
+	// 	fmt.Println("Greator than 10")
+	// } else if(9 < 10){
+	// 	fmt.Println("Smaller than 10")
+	// }
+	// loop
+	for i:=0; i < 5; i+=1{
+		fmt.Println("in loop, count:",i)
+	}
 
+	i :=3
+	switch i {
+	case 1:
+		fmt.Println("1. one")
+	case 2:
+		fmt.Println("2. two")
+	default:
+		fmt.Println("defualt")
+	}
+
+
+	// Array
+	var arr [5]int
+	fmt.Println(arr)
 }
 
 // Integers

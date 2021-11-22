@@ -44,9 +44,12 @@ func main() {
 	}
 
 	// Array
-	var arr [5]int
+	var arr [5]int 
 	arr[0] = 100
 	fmt.Println(arr)
+
+	newarr := [3]int{4,5,6}
+	fmt.Println(newarr, " len: ",len(newarr))
 }
 
 // Integers

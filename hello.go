@@ -87,6 +87,18 @@ func main() {
 	fmt.Println(mymap)
 	fmt.Println(val,ok)
 
+
+	// function 
+	res := apsolute(-5)
+	fmt.Println(res)
+}
+
+
+ func apsolute(x int) int {
+	if(x < 0){
+		return -x
+	}
+	return x
 }
 
 // Integers

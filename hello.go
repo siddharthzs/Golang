@@ -63,6 +63,30 @@ func main() {
 	fmt.Println(newarr)
 	fmt.Printf("capacity: %v, lenth: %v ", cap(s),len(s))
 	fmt.Println(s)
+
+
+	// Range 
+	for x, ele := range s{
+		fmt.Printf("%v: %v\n",x,ele)
+	}
+
+	// Maps
+	var mymap map[string]int = map[string]int{
+		"one":1,
+		"two":2,
+		"three":3,
+		"four":4,
+	} 
+
+	fmt.Println(mymap)
+	mymap["five3"] = 5
+	delete(mymap,"zero")
+	delete(mymap,"one")
+	val, ok := mymap["two"]
+
+	fmt.Println(mymap)
+	fmt.Println(val,ok)
+
 }
 
 // Integers

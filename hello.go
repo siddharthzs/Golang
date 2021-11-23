@@ -1,10 +1,10 @@
 package main
 
 import (
-	"bufio"
+	// "bufio"
 	"fmt"
-	"os"
-	"strconv"
+	// "os"
+	// "strconv"
 )
 
 func main() {
@@ -14,11 +14,11 @@ func main() {
 	// var language = "Golang"
 	fmt.Printf("hello %s, I'm Here\n", language)
 	fmt.Println(out)
-	fmt.Printf("Type the year you were born: ")
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	input, _ := strconv.ParseInt(scanner.Text(), 10, 64)
-	fmt.Printf("You will be %d year old at the end of 2021\n", 2021-input)
+	// fmt.Printf("Type the year you were born: ")
+	// scanner := bufio.NewScanner(os.Stdin)
+	// scanner.Scan()
+	// input, _ := strconv.ParseInt(scanner.Text(), 10, 64)
+	// fmt.Printf("You will be %d year old at the end of 2021\n", 2021-input)
 	// scanner.Scan()
 	// val,_ := strconv.ParseInt(scanner.Text(),10,64)
 	// if val == 10{
@@ -91,10 +91,33 @@ func main() {
 	// function 
 	res := apsolute(-5)
 	fmt.Println(res)
+
+	// mutable and immutable data types
+
+	// slice mutable
+	xarr := []int{1,2,3,4,5,6}
+	xslice := xarr[1:3]
+	xslice[0] = 100
+	fmt.Println(xarr,xslice)
+
+
+	//map are murable
+	xmap :=  map[int]int {
+		1:1,
+		2:2,
+		3:3,
+	}
+	ymap := xmap
+	ymap[1] = 100
+	fmt.Println(xmap,ymap)
+
+
+	// Array are immutable
 }
 
 
  func apsolute(x int) int {
+	 defer fmt.Println("run absolute for ",x)
 	if(x < 0){
 		return -x
 	}

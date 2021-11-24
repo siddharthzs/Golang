@@ -126,7 +126,12 @@ func main() {
 	tochange := "hello"
 	fmt.Println(tochange)
 
+	// Struct in Go
+	p1:= Point{1,2}
+	p2:= Point{-5,7}
 
+	v1:= distance(p1,p2)
+	fmt.Println(v1)
 	
 }
 

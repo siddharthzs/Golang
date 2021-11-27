@@ -18,12 +18,13 @@ func main(){
 	mydir = mydir[:idx+12]
 
 	SqlFileRegx, err := regexp.Compile(".*.sql")
-	if err != nil{
-		log.Fatal(err)
-	}
+	check(err)
+	FileContentRegx, err := regexp.Compile("FUNCTION dbo.([a-zA-Z_]+)")
+	check(err)
+
 	sqlfile := make(map[string]string)
 	duplicateEntry := make(map[string][]string)
-
+	IncorrectFileName := make(map[string][]string)
 
 	err = filepath.Walk(mydir, func(path string, info os.FileInfo, err error) error{
 		if (err == nil && SqlFileRegx.MatchString(info.Name())){
@@ -37,7 +38,33 @@ func main(){
 			}else{
 				sqlfile[info.Name()] = path
 			}
+
+
+			file, err := os.Open(path)
+			check(err)
+			b1 := make([]byte, 750)
+			n1, err := file.Read(b1)
+			if(err == nil){
+				indexArr := FileContentRegx.FindStringIndex(string(b1[:n1]))
+				functionName := string(b1[indexArr[0]+13:indexArr[1]]) + ".sql"
+				if(functionName != info.Name()){
+					fmt.Println(functionName,info.Name())
+					IncorrectFileName[info.Name()] = append(IncorrectFileName[info.Name()], path)
+				}
+			}
+
+			file.Close()
+			// b1 := make([]byte, 750)
+			
+			// check(err3)
+			// fmt.Println(n1)
+			// indexArr := FileContentRegx.FindStringIndex(string(b1[:n1]))
+			// functionName := string(b1[indexArr[0]+13:indexArr[1]]) + ".sql"
+			// if(functionName != info.Name()){
+			// 	IncorrectFileName[info.Name()] = append(IncorrectFileName[info.Name()], path)
+			// }
 		}
+		
 		return nil
 	})
 
@@ -47,29 +74,32 @@ func main(){
 
 	for key, value := range duplicateEntry{
 		fmt.Printf("\"%s : %s \";\n", key, strings.Join(value,`, `))
-		// fmt.Println("\"",key,":",strings.Join(value,`, `),"\";")
+	}
+
+	if(len(IncorrectFileName) > 0){
+		println("\n============================================================;")
+		for key, value := range IncorrectFileName{
+			fmt.Printf("\"%s : %s \";\n", key, strings.Join(value,`, `))
+		}
 	}
 
 	
 
-	FileContentRegx, err := regexp.Compile("FUNCTION dbo.*\\(")
-	if err != nil{
-		log.Fatal(err)
-	}
-	f, err := os.Open("D:/learnGoWithMe/DatabaseCICD/two.sql")
-    check(err)
-	b1 := make([]byte, 750)
-    n1, err := f.Read(b1)
-	check(err)
-	if(true){
-		fmt.Println(FileContentRegx.FindAllSubmatchIndex(b1[:n1],350))
-	}
-    fmt.Printf("%d bytes: %s\n", n1, string(b1[:n1]))
+	
+	// f, err := os.Open("D:/learnGoWithMe/DatabaseCICD/two.sql")
+    // check(err)
+	// b1 := make([]byte, 750)
+    // n1, err := f.Read(b1)
+	// check(err)
+
+	// arrval := FileContentRegx.FindStringIndex(string(b1[:n1]))
+	// // fmt.Println(arrval[0])
+    // fmt.Printf("%s\n",string(b1[arrval[0]+13:arrval[1]]))
 }
 
 
 func check(e error) {
     if e != nil {
-        panic(e)
+        log.Fatal(e)
     }
 }

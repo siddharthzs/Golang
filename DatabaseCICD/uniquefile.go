@@ -19,7 +19,7 @@ func main(){
 
 	SqlFileRegx, err := regexp.Compile(".*.sql")
 	check(err)
-	FileContentRegx, err := regexp.Compile("FUNCTION dbo.([a-zA-Z_]+)")
+	FileContentRegx, err := regexp.Compile("(FUNCTION|PROCEDURE|VIEW) dbo.([a-zA-Z0-9_]+)")
 	check(err)
 
 	sqlfile := make(map[string]string)

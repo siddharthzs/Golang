@@ -5,7 +5,7 @@ create or replace FUNCTION dbo.two(a varchar, b varchar)
 return table 
 $function$
 begin
-    perform dbo.fn_helloworld(a,b)
-    select * from dbo.fn_helloworld(a,b)
+    select * from dbo.fn_helloworld(a,b);
+    return query select now();
 end
 $function$

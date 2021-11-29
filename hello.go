@@ -132,6 +132,9 @@ func main() {
 
 	v1:= distance(p1,p2)
 	fmt.Println(v1)
+
+
+	// Next Up is interface
 	
 }
 

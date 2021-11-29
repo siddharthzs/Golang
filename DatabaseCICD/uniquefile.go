@@ -19,8 +19,11 @@ func main(){
 
 	SqlFileRegx, err := regexp.Compile(".*.sql")
 	check(err)
-	FileContentRegx, err := regexp.Compile("(FUNCTION|PROCEDURE|VIEW) dbo.([a-zA-Z0-9_]+)")
+	FileContentRegx, err := regexp.Compile("(?:CREATE|create) (?:OR|or) (?:REPLACE|replace) (?:FUNCTION|PROCEDURE|VIEW|function|procedure|view) dbo.([a-zA-Z0-9_]+)")
 	check(err)
+	FunctionRegx, err := regexp.Compile("dbo.([a-zA-Z0-9_]+)")
+	check(err)
+
 
 	sqlfile := make(map[string]string)
 	duplicateEntry := make(map[string][]string)
@@ -46,11 +49,16 @@ func main(){
 			n1, err := file.Read(b1)
 			if(err == nil){
 				indexArr := FileContentRegx.FindStringIndex(string(b1[:n1]))
-				functionName := string(b1[indexArr[0]+13:indexArr[1]]) + ".sql"
-				if(functionName != info.Name()){
-					fmt.Println(functionName,info.Name())
-					IncorrectFileName[info.Name()] = append(IncorrectFileName[info.Name()], path)
+				if(len(indexArr) > 0){
+					b2 := string(b1[indexArr[0]:indexArr[1]])
+					indexArr := FunctionRegx.FindStringIndex(string(b1[indexArr[0]:indexArr[1]]))
+					functionName := string(b2[indexArr[0]+4:indexArr[1]]) + ".sql"
+					fmt.Println(functionName, info.Name())
+					if(functionName != info.Name()){
+						IncorrectFileName[info.Name()] = append(IncorrectFileName[info.Name()], path)
+					}
 				}
+				
 			}
 
 			file.Close()

@@ -1,7 +1,7 @@
 -- liquekj a;lkdjf 
 -- alskdfj
 -- alsdkfja
-create or replace FUNCTION dbo.one(a varchar, b varchar)
+create or replace FUNCTION dbo.two(a varchar, b varchar)
 return table 
 $function$
 begin

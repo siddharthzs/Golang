@@ -1,7 +1,7 @@
 -- liquekj a;lkdjf 
 -- alskdfj
 -- alsdkfja
-create or replace FUNCTION dbo.two(a varchar, b varchar)
+CREATE OR REPLACE PROCEDURE dbo.fn_o365two(a varchar, b varchar)
 return table 
 $function$
 begin

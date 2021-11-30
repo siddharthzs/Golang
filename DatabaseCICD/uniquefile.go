@@ -10,13 +10,13 @@ import (
 )
 
 func main(){
+	// Get Present Working Directory and move to DatabaseCICD
 	mydir, err := os.Getwd()
-	if err != nil{
-		fmt.Println(err)
-	}
+	check(err)
 	idx := strings.Index(mydir,"DatabaseCICD")
 	mydir = mydir[:idx+12]
 
+	// Regex for Finding SQL File and Function Name from File Content
 	SqlFileRegx, err := regexp.Compile(".*.sql")
 	check(err)
 	FileContentRegx, err := regexp.Compile("(?:CREATE|create) (?:OR|or) (?:REPLACE|replace) (?:FUNCTION|PROCEDURE|VIEW|function|procedure|view) dbo.([a-zA-Z0-9_]+)")
@@ -24,7 +24,7 @@ func main(){
 	FunctionRegx, err := regexp.Compile("dbo.([a-zA-Z0-9_]+)")
 	check(err)
 
-
+	// Unordered Map to store key value of function and function location
 	sqlfile := make(map[string]string)
 	duplicateEntry := make(map[string][]string)
 	IncorrectFileName := make(map[string][]string)

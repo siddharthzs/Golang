@@ -145,9 +145,6 @@ func distance(p1 Point, p2 Point) float64 {
 
 
 
-
-
-
 func changeval(str string){
 	str = "Changed!"
 }

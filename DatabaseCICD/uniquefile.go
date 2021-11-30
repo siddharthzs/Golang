@@ -82,7 +82,7 @@ func main(){
 	}
 }
 
-
+// Catch Errors 
 func check(e error) {
     if e != nil {
         log.Fatal(e)

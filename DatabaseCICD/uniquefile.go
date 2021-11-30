@@ -29,9 +29,11 @@ func main(){
 	duplicateEntry := make(map[string][]string)
 	IncorrectFileName := make(map[string][]string)
 
+	// Recursive call in all folders and subfolders
 	err = filepath.Walk(mydir, func(path string, info os.FileInfo, err error) error{
+		// Check if its a SQL file
 		if (err == nil && SqlFileRegx.MatchString(info.Name())){
-			if val, ok := sqlfile[info.Name()]; ok {  // if present
+			if val, ok := sqlfile[info.Name()]; ok {  // if duplicate present
 
 				// send to duplicateEntry
 				if _, ok := duplicateEntry[info.Name()]; !ok {
@@ -42,7 +44,7 @@ func main(){
 				sqlfile[info.Name()] = path
 			}
 
-
+			// Open the Current File and Find and Check the file name with funciton name
 			file, err := os.Open(path)
 			check(err)
 			b1 := make([]byte, 750)
@@ -60,49 +62,24 @@ func main(){
 				}
 				
 			}
-
 			file.Close()
-			// b1 := make([]byte, 750)
-			
-			// check(err3)
-			// fmt.Println(n1)
-			// indexArr := FileContentRegx.FindStringIndex(string(b1[:n1]))
-			// functionName := string(b1[indexArr[0]+13:indexArr[1]]) + ".sql"
-			// if(functionName != info.Name()){
-			// 	IncorrectFileName[info.Name()] = append(IncorrectFileName[info.Name()], path)
-			// }
 		}
 		
 		return nil
 	})
 
-	if err != nil{
-		log.Fatal(err)
-	}
-
+	check(err)
+	// Print duplicate files
 	for key, value := range duplicateEntry{
 		fmt.Printf("\"%s : %s \";\n", key, strings.Join(value,`, `))
 	}
-
+	// Printfiles with different names
 	if(len(IncorrectFileName) > 0){
-		println("\n============================================================;")
+		fmt.Println("\n============================================================;")
 		for key, value := range IncorrectFileName{
 			fmt.Printf("\"%s : %s \";\n", key, strings.Join(value,`, `))
 		}
 	}
-
-	
-
-	
-	// f, err := os.Open("D:/learnGoWithMe/DatabaseCICD/two.sql")
-    // check(err)
-	// b1 := make([]byte, 750)
-    // n1, err := f.Read(b1)
-	// check(err)
-
-	// arrval := FileContentRegx.FindStringIndex(string(b1[:n1]))
-	// // fmt.Println(arrval[0])
-    // fmt.Printf("%s\n",string(b1[arrval[0]+13:arrval[1]]))
 }
 
 

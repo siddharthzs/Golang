@@ -8,3 +8,9 @@
 * Developing network-based programs
 * Developing cross-platform enterprise applications
 * Cloud-native development 
+> Go Features
+>* Supports concurrency through goroutines and channel
+>* Has automatic garbage collection
+>* Does not support classes and objects
+>* Does not support inheritance
+>&nbsp;

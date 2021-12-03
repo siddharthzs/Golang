@@ -14,3 +14,30 @@
 >* Does not support classes and objects
 >* Does not support inheritance
 >&nbsp;
+
+
+#### Comments 
+##### &nbsp;&nbsp;&nbsp;&nbsp; Single Line Comment
+```
+package main;
+import ("fmt");
+
+func main(){
+    // This is one line Commment
+    fmt.Println("GO Tutorials From W3 School");
+}
+```
+##### &nbsp;&nbsp;&nbsp;&nbsp; Multi-Line Comment
+```
+package main;
+import ("fmt");
+
+func main(){
+    /*
+        This
+        is 
+        MutliLine Comment
+    */
+    fmt.Println("GO Tutorials From W3 School");
+}
+```

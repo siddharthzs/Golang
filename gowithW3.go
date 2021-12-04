@@ -24,4 +24,13 @@ func main(){
 	fmt.Printf("%x\n","Hey, I'm Siddharth Choudhary")
 	// fmt.Printf("%t\n","Hey, I'm Siddharth Choudhary")
 
+	// Arrays
+	var zPoints = [5]int{4:5,1:2};
+	var xPoints = [2]int{1,1};
+	var yPoints = [...]int{4,5};
+
+	zPoints[0] = 5;
+	fmt.Println(zPoints,yPoints,xPoints)
+	fmt.Println(len(xPoints))
+
 }

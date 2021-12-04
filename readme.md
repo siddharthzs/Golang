@@ -76,3 +76,11 @@ func main(){
 **%.2f**	Default width, precision 2
 **%6.2f**	Width 6, precision 2
 **%g**	Exponent as needed, only necessary digits
+
+
+#### Arrays
+```
+var array_name = [length]datatype{values} // here length is defined
+or
+var array_name = [...]datatype{values} // here length is inferred
+```

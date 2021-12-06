@@ -33,4 +33,9 @@ func main(){
 	fmt.Println(zPoints,yPoints,xPoints)
 	fmt.Println(len(xPoints))
 
+	// Slices 
+	myarray := [...]int{1,2,3,4,5,6,7,8,9,10,11};
+	myslice := myarray[2:7] // A slice made from the array
+	fmt.Printf("slice: %v, lenght:%v, capacity:%v",myslice,len(myslice),cap(myslice)) // empty slice with 3 capacity and size 3
+
 }

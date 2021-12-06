@@ -84,3 +84,18 @@ var array_name = [length]datatype{values} // here length is defined
 or
 var array_name = [...]datatype{values} // here length is inferred
 ```
+
+#### Slices
+Slices are similar to arrays, but are more powerful and flexible.
+Like arrays, slices are also used to store multiple values of the same type in a single variable.
+However, unlike arrays, the length of a slice can grow and shrink as you see fit.
+In Go, there are several ways to create a slice:
+&nbsp;&nbsp;&nbsp;&nbsp;Using the []datatype{values} format
+&nbsp;&nbsp;&nbsp;&nbsp;Create a slice from an array
+&nbsp;&nbsp;&nbsp;&nbsp;Using the make() function
+
+##### &nbsp;&nbsp;Creating a Slice
+```
+slice_name := []datatype{values}
+myslice := myarray[start:end] // A slice made from the array
+```

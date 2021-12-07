@@ -36,6 +36,23 @@ func main(){
 	// Slices 
 	myarray := [...]int{1,2,3,4,5,6,7,8,9,10,11};
 	myslice := myarray[2:7] // A slice made from the array
-	fmt.Printf("slice: %v, lenght:%v, capacity:%v",myslice,len(myslice),cap(myslice)) // empty slice with 3 capacity and size 3
+	fmt.Printf("slice: %v, lenght:%v, capacity:%v\n",myslice,len(myslice),cap(myslice)) // empty slice with 3 capacity and size 3
 
+	// Slice from make function
+	myslice1 := make([]int,5,10)
+	fmt.Println(myslice1)
+
+	//Swtich Cases
+	var day int = 4;
+
+	switch day {
+	case 1,3,5:
+	 fmt.Println("Odd weekday")
+	case 2,4:
+	  fmt.Println("Even weekday")
+	case 6,7:
+	 fmt.Println("Weekend")
+   default:
+	 fmt.Println("Invalid day of day number")
+   }
 }

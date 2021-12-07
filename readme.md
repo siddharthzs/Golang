@@ -84,7 +84,7 @@ var array_name = [length]datatype{values} // here length is defined
 or
 var array_name = [...]datatype{values} // here length is inferred
 ```
-
+d .
 #### Slices
 Slices are similar to arrays, but are more powerful and flexible.
 Like arrays, slices are also used to store multiple values of the same type in a single variable.
@@ -98,4 +98,25 @@ In Go, there are several ways to create a slice:
 ```
 slice_name := []datatype{values}
 myslice := myarray[start:end] // A slice made from the array
+slice_name := make([]type, length, capacity) // A slice from make function
+slice_name = append(slice_name, element1, element2, ...) // append element to a slice
+slice3 = append(slice1, slice2...) // append a slice to another slice  
+'...' after slice2 is necessary 
+copy(dest, src)
+```
+
+#### Loops(The only loop for loop)
+Loops are handy if you want to run the same code over and over again, each time with a different value.
+Each execution of a loop is called an iteration. 
+```
+for statement1; statement2; statement3 {
+   // code to be executed for each iteration
+}
+```
+##### &nbsp;&nbsp;&nbsp; Range
+&nbsp;&nbsp;&nbsp;&nbsp;_The range keyword is used to more easily iterate over an array, slice or map. It returns both the index and the value._
+```
+for index, value := array|slice|map {
+   // code to be executed for each iteration
+}
 ```

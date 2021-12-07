@@ -120,3 +120,19 @@ for index, value := array|slice|map {
    // code to be executed for each iteration
 }
 ```
+
+
+#### Functions 
+```
+func FunctionName(param1 type, param2 type) type {
+  // code to be executed
+  return output
+}
+```
+&nbsp;&nbsp;&nbsp; ***return the value with a naked return***
+```
+func FunctionName(param1 type, param2 type) (output type) {
+  // code to be executed
+  return 
+}
+```

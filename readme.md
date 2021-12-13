@@ -149,3 +149,21 @@ type Person struct {
   salary int
 }
 ```
+
+#### Maps
+Maps are used to store data values in key:value pairs. Each element in a map is a key:value pair. A map is an unordered and changeable collection that does not allow duplicates.
+The length of a map is the number of its elements. You can find it using the len() function.
+The default value of a map is nil. Maps hold references to an underlying hash table.
+```
+myFirstMap := map[KeyType]ValueType {key1:value1, key2:value2,...}
+myFirstMap := map[int]string {1:"one", 2:"two",...}
+
+// Empty map
+var hist = make(map[string]string) // The map is empty
+
+// Check for a key in Map
+val, ok :=map_name[key]
+
+// Remove Element from Map
+delete(map_name, key)
+```
